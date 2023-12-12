@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Check if there are any images -->
+    {% if images %}
+        <div class="container">
+            <div class="row">
+                <!-- Iterate through the list of user images -->
+                {% for image in images %}
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename=image.filename) }}" class="card-img-top" alt="Uploaded Image">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ image.classification }}</h5>
+                                <!-- Add more details about the image if needed -->
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <p class="text-center">No images uploaded yet.</p>
+    {% endif %}
+{% endblock %}
